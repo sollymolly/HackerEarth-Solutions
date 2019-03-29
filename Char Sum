@@ -1,0 +1,14 @@
+import string
+stri = input()
+alpha = string.ascii_lowercase
+ar = []
+num = 0
+for i in range(26):
+    ar.append((alpha[i], i+1))
+for j in range(len(stri)):
+    for tup in ar:
+        if tup[0] == stri[j]:
+            num += int(tup[1])
+
+print(num)
+
