@@ -1,0 +1,51 @@
+'''
+# Sample code to perform I/O:
+
+name = input()                  # Reading input from STDIN
+print('Hi, %s.' % name)         # Writing output to STDOUT
+
+# Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+'''
+
+# Write your code here
+def solve(s, k):
+    alphabet_low = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'
+    alphabet_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    numbers = '0123456789'
+    new_str = ''
+    index = 0
+    bolle = True
+    num = 0
+    for i in range(len(s)):
+        if s[i] in alphabet_low:
+            for j in range(len(alphabet_low)):
+                if s[i] == alphabet_low[j]:
+                    index = int(alphabet_low.find(s[i]))
+                    new_str += alphabet_low[index+k%26]
+                    bolle = False
+                    break
+            if bolle:    
+                new_str += s[i]
+            bolle = True
+        elif s[i] in alphabet_up:
+            for j in range(len(alphabet_up)):
+                if s[i] == alphabet_up[j]:
+                    index = int(alphabet_up.find(s[i]))
+                    new_str += alphabet_up[index+k%26]
+                    bolle = False
+                    break
+            if bolle:    
+                new_str += s[i]
+            bolle = True
+        elif s[i] in numbers:
+            num = int(s[i])
+            num += k
+            num = str(num)
+            new_str += num[len(num) - 1]
+        else:
+            new_str += s[i]
+    return new_str
+    
+s = input()
+k = int(input())
+print(solve(s, k))
