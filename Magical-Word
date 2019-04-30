@@ -1,0 +1,60 @@
+# Write your code here
+import math
+import string
+
+def prime(num):
+    if num == 2 or num == 3:
+        return True
+        
+    for i in range(2, math.floor(num**0.5)+1):
+        if num % i == 0:
+            return False
+    return True #prime
+
+sym = '[@_!#$%^&*()<>?/\|}{~:]'
+symbols = list(sym)
+boole = True
+magic, st = [], ''
+length = 0
+val_add, val_sub, add = 0, 0, 0
+for _ in range(int(input())):
+    length = int(input())
+    st = list(input())
+    magic = []
+    for i in st:
+        boole = True
+        val_add = ord(i)
+        if val_add < 67:
+            boole = False
+            magic.append("C")
+        if prime(val_add):
+            if chr(val_add).isalpha():
+                magic.append(chr(val_add))
+                boole = False
+        if val_add % 2 == 0:
+            add = 1
+        else:
+            add = 2
+        val_sub = val_add
+        if boole:
+            while True:
+                val_sub -= add
+                if prime(val_sub):
+                    if chr(val_sub).isalpha():
+                        magic.append(chr(val_sub))
+                        break
+                val_add += add
+                if prime(val_add):
+                    if chr(val_add).isalpha():
+                        magic.append(chr(val_add))
+                        break
+    print(''.join(magic))
+                
+                    
+    
+    
+
+
+
+        
+    
