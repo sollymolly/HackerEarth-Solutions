@@ -1,0 +1,12 @@
+floor = 0
+a = 0
+b = 7
+for _ in range(int(input())):
+    floor = int(input())
+    
+    if abs(a - floor) > abs(b - floor):
+        b = floor
+        print("B")
+    else:
+        a = floor
+        print("A")
